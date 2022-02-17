@@ -13,12 +13,10 @@ import javax.inject.Inject
 class NoteListRepositoryImpl @Inject constructor(
     private val noteListDao: NoteListDao
 ): NoteListRepository {
-    //private val noteListDao = AppDatabase.getInstance(application).noteListDao()
     private val mapper = NoteListMapper()
 
     override suspend fun addNoteItem(noteItem: NoteItem) {
         noteListDao.addNoteItem(mapper.mapEntityToDbModel(noteItem))
-        Log.d("TAG", "TEST4")
     }
 
     override suspend fun deleteNoteItem(noteItem: NoteItem) {
